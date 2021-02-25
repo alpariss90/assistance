@@ -1,0 +1,199 @@
+@(users: commons.Pagination[models.tables.pojos.Users], currentFilter: String)(implicit request: Http.Request) 
+
+@import helper._
+
+
+@link(newPage:Int) = @{
+ 
+    
+    // Generate the link
+    controllers.routes.UserCtrl.liste(newPage,currentFilter)
+    
+}
+
+@main("utilisateur") {
+
+
+
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+<div class="card">
+<h2 style="text-align: center">Liste des utilisateurs</h2>
+
+<div class="card-body">
+
+
+
+ <div id="actions">
+		    	<form action="@link(0)" method="GET" class="form-inline well">
+			    	<div class="form-group">
+			    		<input type="search" id="searchbox" name="filter" value="@currentFilter" placeholder="Intitule ou prix.." class="form-control">
+			    		<input type="hidden" name="page" value="0">
+			    	</div>
+				    	<div class="form-group">	
+					    	<button type="submit" id="searchsubmit" class="btn btn-primary">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</div>
+						<div class="form-group" style="flaot:right">
+							<a class="btn btn-success li-modal" href="@controllers.routes.UserCtrl.show("CREATE", "")" data-rel="tooltip" title="Ajouter">
+					        	<span class="glyphicon glyphicon-plus"></span>
+					        </a>
+				        </div>
+		        </form>
+	         </div>
+
+
+<table class="table table-bordered  text-center">
+<thead>
+<tr>
+<th scope="col">Nom & prenom</th>
+<th scope="col">Profil</th>
+<th scope="col">Login</th>
+<th scope="col">Télephone</th>
+<th scope="col">Etat</th>
+<th scope="col" style="text-align: right">Action</th>
+</tr>
+</thead>
+<tbody>
+@for(d <-users.getList){
+<tr>
+<td scope="row">@d.getNomPrenom()</td>
+<td>@if(d.getDroit().equals("Caissier")){Agent}else{@d.getDroit()}</td>
+<td>@d.getLogin()</td>
+<td>@d.getTelephone()</td>
+<td>@if(d.getEtat()){<span class="badge badge-success">Actif</span>}else{<span class="badge badge-danger">Désactif</span>}</td>
+<td style="text-align: right">
+<a
+	class="btn  btn-info btn-xs btn-rounded li-modal"
+	href="@controllers.routes.UserCtrl.show("EDIT", d.getLogin())" role="button" data-rel="tooltip"
+	title="Editer"> <span class="fas fa-edit"></span>
+</a> 
+| <a class="btn btn-warning btn-xs btn-rounded li-modal"
+	href="@controllers.routes.UserCtrl.show("VIEW", d.getLogin())" role="button" data-rel="tooltip"
+	title="Aperçu avant suppression"> <span
+		class="fab fa-fort-awesome"></span>
+</a> | @if(d.getEtat()){ <a class="btn btn-danger btn-xs btn-rounded"
+	href="@controllers.routes.UserCtrl.delete(d.getLogin, false)"
+	role="button" data-rel="tooltip" title="Désactivé"
+	onclick="return window.confirm('Voulez vous Désactivé?');">
+		<span class="fas fa-trash"></span>
+</a> }else{ <a class="btn btn-success btn-xs btn-rounded"
+	href="@controllers.routes.UserCtrl.delete(d.getLogin, true)"
+	role="button" data-rel="tooltip" title="Activé"
+	onclick="return window.confirm('Voulez vous activé?');">
+		<span class="fas fa-trash"></span>
+</a> }
+|
+<a class="btn btn-primary btn-xs btn-rounded"
+	href="@controllers.routes.UserCtrl.init(d.getLogin)"
+	role="button" data-rel="tooltip" title="reinitialisé le mot de passe"
+	onclick="return window.confirm('Voulez vous reinitialisé le mot de passe?');">
+		<span class="fas fa-key"></span>
+</a>
+</td>
+</tr>
+}
+</tbody>
+</table>
+<div id="pagination">
+  					<nav>
+			            <ul class="pagination">
+			                @if(users.hasPrev) {
+			                    <li class="precedent">
+			                    <a href="@link(users.getPageIndex -1)">&larr; Precedent</a>
+			                    </li>
+			                } else {
+			                    <li class="precedent desactive">
+			                        <a>&larr; Precedent</a>
+			                    </li>
+			                }
+			                <li class="current">
+			                    <a>utilisateur @users.getDisplayXtoYofZ</a>  
+			                </li>
+			                @if(users.hasNext()) {
+			                    <li class="suivant">
+			                    <a href="@link(users.getPageIndex+1)"> Suivant &rarr;</a>
+			                    </li>
+			                } else {
+			                    <li class="suivant desactive">
+			                        <a>Suivant &rarr;</a>
+			                    </li>
+			                }
+			            </ul>
+			            </nav>
+			        </div>	
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Bootstrap Modal with Dynamic Content</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+
+
+
+}
+
+<script>
+$(document).ready(function(){
+	$('.li-modal').on('click', function(e){
+	      e.preventDefault();
+	      $('#myModal').modal('show').find('.modal-content').load($(this).attr('href'));
+	    });
+	
+  
+});
+</script>
+

@@ -1,0 +1,139 @@
+@(implicit request: Http.Request)
+<div class="navbar navbar-inverse navbar-fixed-top  navbar-default " style="z-index: 10300; background-color: #FF9500">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4">
+			<img src="@routes.Assets.versioned("images/logo.jpg")" class="logo" style="width: 80px; height: 70px" />
+			 </div>
+			<div class="col-sm-5">
+				<h1 style="color: dark; vertical-align: baseline;">ASSISTANCE INS-NIGER</h1>
+			</div>
+			<div class="col-sm-3">
+				<ul class="nav navbar-nav pull-right">
+					<li class="dropdown">
+						<a data-toggle="dropdown" href="#">
+							<img src="@routes.Assets.versioned("images/face5.jpg")" class="img-circle" alt="profile" style="width: 40px; " />
+							<b class="caret"></b>
+							<span class="nav-profile-name"></span>
+						</a>
+						<ul class="dropdown-menu pull-right">
+<!-- 							<li><a href="#">Compte</a></li> -->
+							<li><a href="@controllers.routes.UserCtrl.fchangepass(request.session.get("login").get())" class="li-moda">Changer mot de passe</a></li>
+							<li><a href="@controllers.routes.HomeController.deconnecter()">Se deconnecter</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #22D03F !important; top: 65px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="nav navbar-nav text-center" >
+				
+				
+				@if(request.session.get("droit").get() == "Admin") {
+					<li><a href="@routes.UserCtrl.index()" style="color: black;">Utilisateurs</a></li>
+
+					  }
+					  
+					
+			
+			
+			
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+					
+					
+					
+<!-- 				<ul class="nav navbar-nav navbar-right"> -->
+			    
+<!-- 			      <li><a ><span class="glyphicon glyphicon-user"></span> @request.session.get("login")</a></li> -->
+<!-- 			      <li><a href="@routes.AuthenticationCtrl.logout()"><span class="glyphicon glyphicon-log-in"></span> Deconnecter</a></li> -->
+<!-- 		    </ul> -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div class="navbar navbar-inverse fixed-top" style="background-color: #00DAAF !important; z-index: 10300;">
+	<div class="col-md-2 col-xl-2"> <a class="navbar-brand" href="../index.html">LOGO</a> </div>
+	<div class="col-md-10 col-xl-10" style="text-align: center;"> <h1 >Gestion clinique</h1></div>
+</div>
+
+
+
+<div class="dashboard-header navbar-fixed-top" >
+<nav class="navbar navbar-expand-lg " style="background-color: white !important; z-index: 10300; color: #00EABF ">
+<a class="navbar-brand" href="../index.html">ATL</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+ <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="">UTILISATEURS</a>
+    </li>
+   <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        CLIENT
+      </a>
+      <div class="dropdown-menu" >
+        <a class="dropdown-item" href=""> INDEPENDANT</a>
+        <a class="dropdown-item" href="">SOUS TUTELLE</a>
+      </div>
+    </li> 
+        <li class="nav-item">
+      <a class="nav-link" href="">RDV</a>
+    </li>
+<li class="nav-item">
+      <a class="nav-link" href="">DEPENSE</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="">COMPTES</a>
+    </li>
+    
+    
+  </ul>
+<ul class="navbar-nav ml-auto navbar-right-top">
+
+<li class="nav-item dropdown nav-user">
+<a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="@routes.Assets.versioned("assets/images/avatar-1.jpg")" alt="" class="user-avatar-md rounded-circle"></a>
+<div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+<div class="nav-user-info">
+<h5 class="mb-0 text-white nav-user-name">
+John Abraham</h5>
+<span class="status"></span><span class="ml-2">Available</span>
+</div>
+<a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Mon compte</a>
+<a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Changer MDP</a>
+<a class="dropdown-item" href="@routes.AuthenticationCtrl.logout()"><i class="fas fa-power-off mr-2"></i>Deconnexion</a>
+</div>
+ </li>
+</ul>
+</div>
+</nav>
+</div>
+
+ -->

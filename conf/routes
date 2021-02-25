@@ -1,0 +1,38 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index(request:Request)
+GET     /accueil                           controllers.HomeController.acceuil(profil: String, request:Request)
+GET     /test                           controllers.HomeController.test(request:Request)
+POST    /login                  	controllers.HomeController.authentification(request:Request)
+GET     /logout                 	controllers.HomeController.deconnecter(request:Request)
+GET     /acceuil                    controllers.HomeController.acceuil(profil: String, request:Request)
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+#Authentification Ressources
+POST     /auth                           controllers.AuthenticationCtrl.authentification(request:Request)
+GET     /login                          controllers.AuthenticationCtrl.login(request:Request)
+GET     /logout                           controllers.AuthenticationCtrl.logout(request:Request)
+ 
+#User ressources
+GET     /user                           controllers.UserCtrl.show(viewMode: String, login: String,request:Request)
+POST     /user/save                         controllers.UserCtrl.save(request:Request)
+POST     /user/changepass                         controllers.UserCtrl.changepass(request:Request)
+GET     /user/index                           controllers.UserCtrl.index(request:Request)
+GET     /user/fchangepass                           controllers.UserCtrl.fchangepass(login: String, request:Request)
+GET     /user/liste                           controllers.UserCtrl.liste(page: Int, filter: String, request:Request)
+GET     /user/delete                           controllers.UserCtrl.delete(login: String, etat: Boolean,request:Request)
+GET     /user/initpass                           controllers.UserCtrl.init(login: String,request:Request)
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+### fin stock Routes
