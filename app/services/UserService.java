@@ -46,7 +46,9 @@ public class UserService extends UsersDao {
 		//user.setPasse(BCryptHash.hashPassword(u.getPasse()));
 		user.setWhenDone(u.getWhenDone());
 		user.setWhoDone(u.getWhoDone());
-		user.setTelephone(u.getTelephone());
+		user.setBatiment(u.getBatiment());
+		user.setNiveau(u.getNiveau());
+		user.setPorte(u.getPorte());
 		
 		try {
 			if (b){
@@ -116,14 +118,12 @@ public class UserService extends UsersDao {
 	        
 	        Long total = con.connection().selectCount()
 	                .from(Tables.USERS).where(Tables.USERS.LOGIN.lower().like('%' + filter.toLowerCase() + '%')
-	                        		 .or(Tables.USERS.NOM_PRENOM.like('%' + filter + '%'))
-	                        		   .or(Tables.USERS.TELEPHONE.like('%' + filter+ '%')))
+	                        		 .or(Tables.USERS.NOM_PRENOM.like('%' + filter + '%')))
 	                .fetchAny(0, Long.class);
 	        
 	        List<Users> data = con.connection().selectFrom(Tables.USERS).
 	        		where(Tables.USERS.LOGIN.lower().like('%' + filter.toLowerCase() + '%')
-                   		 .or(Tables.USERS.NOM_PRENOM.like('%' + filter + '%'))
-                   		   .or(Tables.USERS.TELEPHONE.like('%' + filter+ '%')))
+                   		 .or(Tables.USERS.NOM_PRENOM.like('%' + filter + '%')))
 	        						.offset((page - 1) * pageSize).limit(pageSize)
 	        						.fetchInto(Users.class);
 

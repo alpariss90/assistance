@@ -37,8 +37,13 @@
 				
 				@if(request.session.get("droit").get() == "Admin") {
 					<li><a href="@routes.UserCtrl.index()" style="color: black;">Utilisateurs</a></li>
-
 					  }
+					  
+					  @if(request.session.get("droit").get() == "Agent") {
+					  <li><a href="@controllers.routes.AssistanceCtrl.alert(request.session.get("login").get())" style="color: black;"  class="li-modalert">Alert</a></li>
+					  }
+					  
+					  <li><a href="@routes.AssistanceCtrl.index()" style="color: black;" id="play">Assistances</a></li>
 					  
 					
 			

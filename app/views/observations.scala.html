@@ -1,0 +1,168 @@
+@(a: models.tables.pojos.VAssistance)(implicit request: Http.Request) 
+
+@import helper._
+@import java.time.format.DateTimeFormatter;
+
+@main("Observations") {
+
+
+
+
+
+<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-4">
+<div class="card">
+<h2 style="text-align: center">Déclarant</h2>
+
+<div class="card-body">
+<table class="table" style="font-size: 25px">
+<tr>
+	<th>Date : </th><th style="color: green">@a.getWhenDone().format(DateTimeFormatter.ofPattern("d/MM/uuuu"))</th>
+</tr>
+<tr>
+	<th>Déclarant : </th><th style="color: green">@a.getDeclarant()</th>
+</tr>
+<tr>
+	<th>Motif : </th><th style="color: green">@a.getMotif()</th>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+
+<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-8">
+<div class="card">
+<h2 style="text-align: center">Observations</h2>
+
+<div class="card-body">
+
+@if(null != a.getObservations && a.getObservations().length !=0){
+
+<table class="table" style="font-size: 25px">
+<tr>
+	<th style="color: #FF9800">@a.getObservations()</th>
+	<th>
+	@if(request.session.get("login").get() == a.getMaintenacier()){
+	<a class="btn btn-danger btn-xs btn-rounded"
+	href="@controllers.routes.AssistanceCtrl.delObs(a.getId)"
+	role="button" data-rel="tooltip" title="Activé"
+	onclick="return window.confirm('Voulez vous supprimer?');">
+		<span class="fas fa-trash"></span>
+</a>
+}
+</th>
+</tr>
+
+</table>
+}else{
+<form method="POST" name="form"
+			action="@controllers.routes.AssistanceCtrl.saveObs() "
+			class="needs-validation"  autocomplete="off">
+			@helper.CSRF.formField
+			  <input type="hidden" name="id" value="@a.getId">
+			  
+			  
+<div class="form-row">
+
+
+
+
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+<label for="motif">Observations</label>
+<textarea rows="" cols="" required="required" class="form-control"  name="observations"></textarea>
+</div>
+</div>
+
+<div class="card-footer d-flex text-muted">
+<table class="table table-hover">
+<tr>
+<td style="text-align: left">
+<a href="@controllers.routes.AssistanceCtrl.index()"
+							class="btn btn-danger btn-sm">Rétour</a> 
+</td>
+<td style="text-align: right">
+					
+							<button type="submit" class="btn btn-success btn-sm">Valider</button> 
+</td>
+</tr>
+</table>
+
+</div>
+</form>
+}
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Bootstrap Modal with Dynamic Content</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+
+
+
+}
+
+<script>
+$(document).ready(function(){
+	$('.li-modal').on('click', function(e){
+	      e.preventDefault();
+	      $('#myModal').modal('show').find('.modal-content').load($(this).attr('href'));
+	    });
+	
+
+  
+});
+</script>
+

@@ -19,6 +19,8 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 POST     /auth                           controllers.AuthenticationCtrl.authentification(request:Request)
 GET     /login                          controllers.AuthenticationCtrl.login(request:Request)
 GET     /logout                           controllers.AuthenticationCtrl.logout(request:Request)
+GET     /init                           controllers.AuthenticationCtrl.initPassForm(login: String, request:Request)
+POST     /changepass                         controllers.AuthenticationCtrl.changepass(request:Request)
  
 #User ressources
 GET     /user                           controllers.UserCtrl.show(viewMode: String, login: String,request:Request)
@@ -31,6 +33,16 @@ GET     /user/delete                           controllers.UserCtrl.delete(login
 GET     /user/initpass                           controllers.UserCtrl.init(login: String,request:Request)
 
 
+
+GET     /assistance/index                         controllers.AssistanceCtrl.index(request:Request)
+GET     /assistance/liste                         controllers.AssistanceCtrl.liste(request:Request)
+GET     /assistance/alert                           controllers.AssistanceCtrl.alert(login: String, request:Request)
+POST     /assistance/saveAlert                         controllers.AssistanceCtrl.saveAlert(request:Request)
+GET     /assistance/count                         controllers.AssistanceCtrl.getCount(request:Request)
+GET     /assistance/enter                         controllers.AssistanceCtrl.enter(co: Long, request:Request)
+GET     /assistance/observ                         controllers.AssistanceCtrl.observations(id: Long, request:Request)
+POST     /assistance/saveObs                         controllers.AssistanceCtrl.saveObs(request:Request)
+GET     /assistance/del                         controllers.AssistanceCtrl.delObs(id: Long, request:Request)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

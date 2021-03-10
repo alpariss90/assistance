@@ -115,16 +115,23 @@ public class UsersDao extends DAOImpl<UsersRecord, models.tables.pojos.Users, St
     }
 
     /**
-     * Fetch records that have <code>telephone IN (values)</code>
+     * Fetch records that have <code>batiment IN (values)</code>
      */
-    public List<models.tables.pojos.Users> fetchByTelephone(Integer... values) {
-        return fetch(Users.USERS.TELEPHONE, values);
+    public List<models.tables.pojos.Users> fetchByBatiment(String... values) {
+        return fetch(Users.USERS.BATIMENT, values);
     }
 
     /**
-     * Fetch a unique record that has <code>telephone = value</code>
+     * Fetch records that have <code>niveau IN (values)</code>
      */
-    public models.tables.pojos.Users fetchOneByTelephone(Integer value) {
-        return fetchOne(Users.USERS.TELEPHONE, value);
+    public List<models.tables.pojos.Users> fetchByNiveau(String... values) {
+        return fetch(Users.USERS.NIVEAU, values);
+    }
+
+    /**
+     * Fetch records that have <code>porte IN (values)</code>
+     */
+    public List<models.tables.pojos.Users> fetchByPorte(String... values) {
+        return fetch(Users.USERS.PORTE, values);
     }
 }

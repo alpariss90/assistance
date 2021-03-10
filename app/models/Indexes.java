@@ -6,6 +6,7 @@ package models;
 
 import javax.annotation.Generated;
 
+import models.tables.Assistance;
 import models.tables.Users;
 
 import org.jooq.Index;
@@ -30,15 +31,15 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
+    public static final Index ASSISTANCE_PKEY = Indexes0.ASSISTANCE_PKEY;
     public static final Index USERS_PKEY = Indexes0.USERS_PKEY;
-    public static final Index USERS_TELEPHONE_KEY = Indexes0.USERS_TELEPHONE_KEY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
     private static class Indexes0 extends AbstractKeys {
+        public static Index ASSISTANCE_PKEY = createIndex("assistance_pkey", Assistance.ASSISTANCE, new OrderField[] { Assistance.ASSISTANCE.ID }, true);
         public static Index USERS_PKEY = createIndex("users_pkey", Users.USERS, new OrderField[] { Users.USERS.LOGIN }, true);
-        public static Index USERS_TELEPHONE_KEY = createIndex("users_telephone_key", Users.USERS, new OrderField[] { Users.USERS.TELEPHONE }, true);
     }
 }

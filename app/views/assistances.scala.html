@@ -1,0 +1,139 @@
+@(assistances: List[models.tables.pojos.VAssistance])(implicit request: Http.Request) 
+
+@import helper._
+@import java.time.format.DateTimeFormatter;
+
+@main("Assistances") {
+
+
+
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+<div class="card">
+<h2 style="text-align: center">Liste des assistances</h2>
+
+<div class="card-body">
+
+<!-- <button class="btn btn-success" id="act">Activer</button>
+<button class="btn btn-danger" id="desac">Désactiver</button>
+<br><br>
+ -->
+@if(assistances.size ==0){
+<b>Liste vide</b>
+}else{
+<table class="table table-bordered  text-center" id="datatabl">
+<thead>
+<tr>
+<th scope="col">Date</th>
+<th scope="col">Déclarant</th>
+<th scope="col">Motif</th>
+<th scope="col">Localisation</th>
+@if(request.session.get("droit").get() == "Admin") {
+<th scope="col">Maintenacier</th>
+<th scope="col">Observations</th>
+}
+<th scope="col">Etat</th>
+<th scope="col" style="text-align: right">Action</th>
+</tr>
+</thead>
+<tbody>
+@for(d <-assistances){
+<tr>
+<td scope="row">@d.getWhenDone().format(DateTimeFormatter.ofPattern("d/MM/uuuu"))</td>
+<td>@d.getNomPrenom()</td>
+<td>@d.getMotif()</td>
+<td>@d.getBatiment(), @d.getNiveau(), @d.getPorte()</td>
+@if(request.session.get("droit").get() == "Admin") {
+<td>@d.getMaintenacier()</td>
+<td style="text-align: justify">@d.getObservations()</td>
+}
+<td>@if(d.getIsClose()){<span class="badge badge-success">Effectuée</span>}else{<span class="badge badge-danger">En cours</span>}</td>
+<td style="text-align: right">
+@if(request.session.get("droit").get() == "Admin") {
+<a class="btn btn-success btn-xs btn-rounded"
+	href="@controllers.routes.AssistanceCtrl.observations(d.getId)"
+	role="button" data-rel="tooltip" title="Enregistrer des observations">
+		Observations
+</a>
+}
+</td>
+</tr>
+}
+</tbody>
+</table>
+}
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Bootstrap Modal with Dynamic Content</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+
+
+
+}
+
+<script>
+$(document).ready(function(){
+	$('.li-modal').on('click', function(e){
+	      e.preventDefault();
+	      $('#myModal').modal('show').find('.modal-content').load($(this).attr('href'));
+	    });
+	
+
+  
+});
+</script>
+

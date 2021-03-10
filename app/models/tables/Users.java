@@ -39,7 +39,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Users extends TableImpl<UsersRecord> {
 
-    private static final long serialVersionUID = -23067189;
+    private static final long serialVersionUID = -795201128;
 
     /**
      * The reference instance of <code>public.users</code>
@@ -95,9 +95,19 @@ public class Users extends TableImpl<UsersRecord> {
     public final TableField<UsersRecord, String> PHOTO = createField("photo", org.jooq.impl.SQLDataType.VARCHAR, this, "");
 
     /**
-     * The column <code>public.users.telephone</code>.
+     * The column <code>public.users.batiment</code>.
      */
-    public final TableField<UsersRecord, Integer> TELEPHONE = createField("telephone", org.jooq.impl.SQLDataType.INTEGER, this, "");
+    public final TableField<UsersRecord, String> BATIMENT = createField("batiment", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+
+    /**
+     * The column <code>public.users.niveau</code>.
+     */
+    public final TableField<UsersRecord, String> NIVEAU = createField("niveau", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+
+    /**
+     * The column <code>public.users.porte</code>.
+     */
+    public final TableField<UsersRecord, String> PORTE = createField("porte", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
      * Create a <code>public.users</code> table reference
@@ -141,7 +151,7 @@ public class Users extends TableImpl<UsersRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.USERS_PKEY, Indexes.USERS_TELEPHONE_KEY);
+        return Arrays.<Index>asList(Indexes.USERS_PKEY);
     }
 
     /**
@@ -157,7 +167,7 @@ public class Users extends TableImpl<UsersRecord> {
      */
     @Override
     public List<UniqueKey<UsersRecord>> getKeys() {
-        return Arrays.<UniqueKey<UsersRecord>>asList(Keys.USERS_PKEY, Keys.USERS_TELEPHONE_KEY);
+        return Arrays.<UniqueKey<UsersRecord>>asList(Keys.USERS_PKEY);
     }
 
     /**

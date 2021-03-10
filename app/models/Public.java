@@ -10,9 +10,12 @@ import java.util.List;
 
 import javax.annotation.Generated;
 
+import models.tables.Assistance;
 import models.tables.Users;
+import models.tables.VAssistance;
 
 import org.jooq.Catalog;
+import org.jooq.Sequence;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
@@ -30,7 +33,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 78719479;
+    private static final long serialVersionUID = 408426070;
 
     /**
      * The reference instance of <code>public</code>
@@ -38,9 +41,19 @@ public class Public extends SchemaImpl {
     public static final Public PUBLIC = new Public();
 
     /**
+     * The table <code>public.assistance</code>.
+     */
+    public final Assistance ASSISTANCE = models.tables.Assistance.ASSISTANCE;
+
+    /**
      * The table <code>public.users</code>.
      */
     public final Users USERS = models.tables.Users.USERS;
+
+    /**
+     * The table <code>public.v_assistance</code>.
+     */
+    public final VAssistance V_ASSISTANCE = models.tables.VAssistance.V_ASSISTANCE;
 
     /**
      * No further instances allowed
@@ -59,6 +72,18 @@ public class Public extends SchemaImpl {
     }
 
     @Override
+    public final List<Sequence<?>> getSequences() {
+        List result = new ArrayList();
+        result.addAll(getSequences0());
+        return result;
+    }
+
+    private final List<Sequence<?>> getSequences0() {
+        return Arrays.<Sequence<?>>asList(
+            Sequences.ASSISTANCE_ID_SEQ);
+    }
+
+    @Override
     public final List<Table<?>> getTables() {
         List result = new ArrayList();
         result.addAll(getTables0());
@@ -67,6 +92,8 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            Users.USERS);
+            Assistance.ASSISTANCE,
+            Users.USERS,
+            VAssistance.V_ASSISTANCE);
     }
 }

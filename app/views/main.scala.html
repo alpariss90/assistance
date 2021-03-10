@@ -28,6 +28,32 @@
     height: 150px;
     width:150px;
     }
+    
+    .modall {
+  text-align: center;
+}
+
+@@media screen and (min-width: 768px) { 
+  .modall:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialogg {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.centerr {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
     </style>
     </head>
     <body style="background-color: white; padding-top: 100px">
@@ -47,7 +73,7 @@
     	
         @content
         
-        			
+
 			
 <div class="modal fade" id="myModalfchange" role="dialog" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
@@ -56,7 +82,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Bootstrap Modal with Dynamic Content</h4>
+              
             </div>
             <div class="modal-body">
 
@@ -67,6 +93,48 @@
         </div>
       
     </div>
+</div>
+
+<div class="modal fade" id="myModalfalert" role="dialog" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade modall" id="myModall"role="dialog" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialogg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title" id="myModalLabel">Alert Maintenance</h4>
+      </div>
+      <div class="modal-body" style="background-color: red">
+        <img src='@routes.Assets.versioned("images/alert.jpg")' class="centerr"/>
+      
+        
+      </div>
+      <div class="modal-footer">
+        <a href="@routes.AssistanceCtrl.index()" class="btn btn-danger" >FERMER</a>
+        
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -103,9 +171,17 @@
 <script>
 $(document).ready(function(){
 	
+	
+	
+	
 	$('.li-moda').on('click', function(e){
 	      e.preventDefault();
 	      $('#myModalfchange').modal('show').find('.modal-content').load($(this).attr('href'));
+	    });
+	
+	$('.li-modalert').on('click', function(e){
+	      e.preventDefault();
+	      $('#myModalfalert').modal('show').find('.modal-content').load($(this).attr('href'));
 	    });
 	
 	$('.montant').number(true, 0, ',', ' ');
@@ -113,6 +189,80 @@ $(document).ready(function(){
 	$('#datatabl').DataTable();
 	
 	$('.datepicker').datepicker();
+
+
+	
+	    var audioElement = document.createElement('audio');
+	   // audioElement.setAttribute('src', 'http://www.soundjay.com/misc/sounds/bell-ringing-01.mp3');
+	   audioElement.setAttribute('src', 'http://172.16.11.4//alarme.mp3');
+	   //audioElement.setAttribute('autoplay', 'true');
+	   //audioElement.setAttribute('muted', '');
+	    
+	   // audioElement.addEventListener('ended', function() {
+	     //   this.play();
+	    //}, false);
+	    
+	    
+	    
+	 
+	       
+	    
+	    	
+	    	
+	        const interval = setInterval(function() {
+	     	   
+	        	$.ajax({type:"GET", url:"/assistance/count",
+	    			error : function(err){  console.log(err) },
+	    			success : function(dataFromServer) {
+	    				if(dataFromServer.options=="1"){
+	    					$('#myModall').modal('show');
+	    				}
+	    			}
+
+	    			});
+	        	
+	        	 }, 3000);
+	
+	    
+	    
+	    function playAudio(){
+	    	//var audio = new Audio('http://172.16.11.4//alarme.mp3');
+	    	//var playPromise = audio.play();
+	    	//document.getElementById('alarm').play();
+	    	$("#alarm").get(0).play();
+	    }
+	   /* $('#pause').click(function() {
+	        audioElement.pause();
+	        $("#status").text("Status: Paused");
+	    });
+	    
+	    $('#restart').click(function() {
+	        audioElement.currentTime = 0;
+	    });*/
+	    
+	    /*audioElement.addEventListener("canplay",function(){
+        $("#length").text("Duration:" + audioElement.duration + " seconds");
+        $("#source").text("Source:" + audioElement.src);
+        $("#status").text("Status: Ready to play").css("color","green");
+    });
+    
+    audioElement.addEventListener("timeupdate",function(){
+        $("#currentTime").text("Current second:" + audioElement.currentTime);
+    });*/
+
+    
+    
+   
+    
+	    
+	    		
+	    	
+	    
+	
+    
+    
+    
+    
   
 });
 </script>

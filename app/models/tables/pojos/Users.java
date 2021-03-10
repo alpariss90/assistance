@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Users implements Serializable {
 
-    private static final long serialVersionUID = 878327733;
+    private static final long serialVersionUID = 2138757083;
 
     private String        login;
     private String        droit;
@@ -33,7 +33,9 @@ public class Users implements Serializable {
     private LocalDateTime whenDone;
     private String        nomPrenom;
     private String        photo;
-    private Integer       telephone;
+    private String        batiment;
+    private String        niveau;
+    private String        porte;
 
     public Users() {}
 
@@ -46,7 +48,9 @@ public class Users implements Serializable {
         this.whenDone = value.whenDone;
         this.nomPrenom = value.nomPrenom;
         this.photo = value.photo;
-        this.telephone = value.telephone;
+        this.batiment = value.batiment;
+        this.niveau = value.niveau;
+        this.porte = value.porte;
     }
 
     public Users(
@@ -58,7 +62,9 @@ public class Users implements Serializable {
         LocalDateTime whenDone,
         String        nomPrenom,
         String        photo,
-        Integer       telephone
+        String        batiment,
+        String        niveau,
+        String        porte
     ) {
         this.login = login;
         this.droit = droit;
@@ -68,7 +74,9 @@ public class Users implements Serializable {
         this.whenDone = whenDone;
         this.nomPrenom = nomPrenom;
         this.photo = photo;
-        this.telephone = telephone;
+        this.batiment = batiment;
+        this.niveau = niveau;
+        this.porte = porte;
     }
 
     public String getLogin() {
@@ -135,12 +143,28 @@ public class Users implements Serializable {
         this.photo = photo;
     }
 
-    public Integer getTelephone() {
-        return this.telephone;
+    public String getBatiment() {
+        return this.batiment;
     }
 
-    public void setTelephone(Integer telephone) {
-        this.telephone = telephone;
+    public void setBatiment(String batiment) {
+        this.batiment = batiment;
+    }
+
+    public String getNiveau() {
+        return this.niveau;
+    }
+
+    public void setNiveau(String niveau) {
+        this.niveau = niveau;
+    }
+
+    public String getPorte() {
+        return this.porte;
+    }
+
+    public void setPorte(String porte) {
+        this.porte = porte;
     }
 
     @Override
@@ -155,7 +179,9 @@ public class Users implements Serializable {
         sb.append(", ").append(whenDone);
         sb.append(", ").append(nomPrenom);
         sb.append(", ").append(photo);
-        sb.append(", ").append(telephone);
+        sb.append(", ").append(batiment);
+        sb.append(", ").append(niveau);
+        sb.append(", ").append(porte);
 
         sb.append(")");
         return sb.toString();

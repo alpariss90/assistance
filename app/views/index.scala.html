@@ -16,18 +16,18 @@
 	    <br><br><br>
 	    <div style="margin-left: 35px; width: 390px">
 	           @if(request.flash.get("error").isPresent()) {
-	                            <div id="feedBackArea" style="margin-bottom: 6px !important;" class="alert alert-danger"> @request.flash.get("error").get</div>
+	                            <div id="feedBackArea" style="margin-bottom: 6px !important; color: white" class="alert alert-danger"> @request.flash.get("error").get</div>
 	                        }
 	                        @if(request.flash.get("warning").isPresent()) {
-	                            <div id="feedBackArea" style="margin-bottom: 6px !important;" class="alert alert-warning">@request.flash.get("warning").get</div>
+	                            <div id="feedBackArea" style="margin-bottom: 6px !important; color: white" class="alert alert-warning">@request.flash.get("warning").get</div>
 	                        }
 	                        @if(request.flash.get("success").isPresent()) {
-	                            <div id="feedBackArea" style="margin-bottom: 6px !important;" class="alert alert-success">@request.flash.get("success").get</div>
+	                            <div id="feedBackArea" style="margin-bottom: 6px !important; color: white" class="alert alert-success">@request.flash.get("success").get</div>
 	                        }
 	        </div>
 	        <div class="card card-container">
 	        <h3 class="text-center">
-					<center><small style="color: #001f3f; font-weight: bold;"><i>INS NIGER</i></small> </center> 
+					<center><small style="color: #001f3f; font-weight: bold;"><i>ASSISTANCE INS NIGER</i></small> </center> 
 				</h3>
 	        <img src="@routes.Assets.versioned("images/logo.jpg")" class="profile-img-card0" style="width: 220px;height:150px; border: 1px solid ;border-radius:5px;">
 	            

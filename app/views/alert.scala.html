@@ -1,0 +1,76 @@
+@(login :String )(implicit request: Http.Request) 
+
+<html lang="en">
+
+	<head>
+		<title>ALERT</title>
+		<meta charset="utf-8">
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.css")">
+		<link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/fonts/fontawesome/css/fontawesome-all.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/jquery.dataTables.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("highcharts/hich.css")">
+		<link rel="shortcut icon" href='@routes.Assets.versioned("images/logo.jpg")'/>
+		 
+    </head>
+    <body >
+    <br><br>
+<h3 >Formulaire de demande d'assistance</h3>
+<form method="POST" name="form"
+			action="@controllers.routes.AssistanceCtrl.saveAlert() "
+			class="needs-validation"  autocomplete="off">
+			@helper.CSRF.formField
+			  <input type="hidden" name="log" value="@login">
+			  
+			  
+<div class="form-row">
+
+
+
+
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+<label for="motif">Motif</label>
+
+<input type="text" name="motif" required="required" class="form-control" placeholder="Entrer le motif de votre assistance" />
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+<div class="card-footer d-flex text-muted">
+<table class="table table-hover">
+<tr>
+<td style="text-align: left">
+<a href="@controllers.routes.AssistanceCtrl.index()"
+							class="btn btn-danger btn-sm">Rétour</a> 
+</td>
+<td style="text-align: right">
+					
+							<button type="submit" class="btn btn-success btn-sm">Valider</button> 
+</td>
+</tr>
+</table>
+
+</div>
+</form>
+
+
+    
+    	
+        
+        <script src="@routes.Assets.versioned("js/jquery-3.2.1.js")" ></script>
+        <script src="@routes.Assets.versioned("js/bootstrap.js")" ></script>
+	<script src="@routes.Assets.versioned("assets/vendor/slimscroll/jquery.slimscroll.js")"></script>
+		<script src='@routes.Assets.versioned("javascripts/jquery.autocomplete.min.js")' type='text/javascript'></script>
+
+	</body>
+</html>
+

@@ -28,7 +28,7 @@
  <div id="actions">
 		    	<form action="@link(0)" method="GET" class="form-inline well">
 			    	<div class="form-group">
-			    		<input type="search" id="searchbox" name="filter" value="@currentFilter" placeholder="Intitule ou prix.." class="form-control">
+			    		<input type="search" id="searchbox" name="filter" value="@currentFilter" placeholder="nom, prénom ou login.." class="form-control">
 			    		<input type="hidden" name="page" value="0">
 			    	</div>
 				    	<div class="form-group">	
@@ -51,7 +51,7 @@
 <th scope="col">Nom & prenom</th>
 <th scope="col">Profil</th>
 <th scope="col">Login</th>
-<th scope="col">Télephone</th>
+<th scope="col">Localisation</th>
 <th scope="col">Etat</th>
 <th scope="col" style="text-align: right">Action</th>
 </tr>
@@ -60,9 +60,9 @@
 @for(d <-users.getList){
 <tr>
 <td scope="row">@d.getNomPrenom()</td>
-<td>@if(d.getDroit().equals("Caissier")){Agent}else{@d.getDroit()}</td>
+<td>@d.getDroit()</td>
 <td>@d.getLogin()</td>
-<td>@d.getTelephone()</td>
+<td></td>
 <td>@if(d.getEtat()){<span class="badge badge-success">Actif</span>}else{<span class="badge badge-danger">Désactif</span>}</td>
 <td style="text-align: right">
 <a

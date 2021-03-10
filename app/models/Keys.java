@@ -6,9 +6,13 @@ package models;
 
 import javax.annotation.Generated;
 
+import models.tables.Assistance;
 import models.tables.Users;
+import models.tables.records.AssistanceRecord;
 import models.tables.records.UsersRecord;
 
+import org.jooq.ForeignKey;
+import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 
@@ -31,25 +35,37 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<AssistanceRecord, Long> IDENTITY_ASSISTANCE = Identities0.IDENTITY_ASSISTANCE;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<AssistanceRecord> ASSISTANCE_PKEY = UniqueKeys0.ASSISTANCE_PKEY;
     public static final UniqueKey<UsersRecord> USERS_PKEY = UniqueKeys0.USERS_PKEY;
-    public static final UniqueKey<UsersRecord> USERS_TELEPHONE_KEY = UniqueKeys0.USERS_TELEPHONE_KEY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<AssistanceRecord, UsersRecord> ASSISTANCE__ASSISTANCE_DECLARANT_FKEY = ForeignKeys0.ASSISTANCE__ASSISTANCE_DECLARANT_FKEY;
+    public static final ForeignKey<AssistanceRecord, UsersRecord> ASSISTANCE__ASSISTANCE_MAINTENACIER_FKEY = ForeignKeys0.ASSISTANCE__ASSISTANCE_MAINTENACIER_FKEY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
+    private static class Identities0 extends AbstractKeys {
+        public static Identity<AssistanceRecord, Long> IDENTITY_ASSISTANCE = createIdentity(Assistance.ASSISTANCE, Assistance.ASSISTANCE.ID);
+    }
+
     private static class UniqueKeys0 extends AbstractKeys {
+        public static final UniqueKey<AssistanceRecord> ASSISTANCE_PKEY = createUniqueKey(Assistance.ASSISTANCE, "assistance_pkey", Assistance.ASSISTANCE.ID);
         public static final UniqueKey<UsersRecord> USERS_PKEY = createUniqueKey(Users.USERS, "users_pkey", Users.USERS.LOGIN);
-        public static final UniqueKey<UsersRecord> USERS_TELEPHONE_KEY = createUniqueKey(Users.USERS, "users_telephone_key", Users.USERS.TELEPHONE);
+    }
+
+    private static class ForeignKeys0 extends AbstractKeys {
+        public static final ForeignKey<AssistanceRecord, UsersRecord> ASSISTANCE__ASSISTANCE_DECLARANT_FKEY = createForeignKey(models.Keys.USERS_PKEY, Assistance.ASSISTANCE, "assistance__assistance_declarant_fkey", Assistance.ASSISTANCE.DECLARANT);
+        public static final ForeignKey<AssistanceRecord, UsersRecord> ASSISTANCE__ASSISTANCE_MAINTENACIER_FKEY = createForeignKey(models.Keys.USERS_PKEY, Assistance.ASSISTANCE, "assistance__assistance_maintenacier_fkey", Assistance.ASSISTANCE.MAINTENACIER);
     }
 }

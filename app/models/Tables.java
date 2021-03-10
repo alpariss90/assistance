@@ -6,7 +6,9 @@ package models;
 
 import javax.annotation.Generated;
 
+import models.tables.Assistance;
 import models.tables.Users;
+import models.tables.VAssistance;
 
 
 /**
@@ -23,7 +25,17 @@ import models.tables.Users;
 public class Tables {
 
     /**
+     * The table <code>public.assistance</code>.
+     */
+    public static final Assistance ASSISTANCE = models.tables.Assistance.ASSISTANCE;
+
+    /**
      * The table <code>public.users</code>.
      */
     public static final Users USERS = models.tables.Users.USERS;
+
+    /**
+     * The table <code>public.v_assistance</code>.
+     */
+    public static final VAssistance V_ASSISTANCE = models.tables.VAssistance.V_ASSISTANCE;
 }

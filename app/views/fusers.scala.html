@@ -41,21 +41,13 @@
 										<option value="Admin" @if( user.getDroit() !=null
 											&& user.getDroit().equals("Admin")){ selected="selected"}>Admin</option>
 										<option value="Caissier" @if(user.getDroit() !=null
-											&& user.getDroit().equals("Caissier)")){ selected="selected"}>Agent</option>
+											&& user.getDroit().equals("Agent)")){ selected="selected"}>Agent</option>
 										
 									</select>
 
 </div>
 
-<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
-<label for="Login">Téléphone</label>
-<input type="text" name="telephone" value="@user.getTelephone()"
-										required="required"
-										
-										placeholder="téléphone de l'utilisateur" class="form-control telephone"
-										required="required" maxlength="8" >
 
-</div>
 
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
 <label for="Login">Login</label>
