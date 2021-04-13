@@ -33,7 +33,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class VAssistance extends TableImpl<VAssistanceRecord> {
 
-    private static final long serialVersionUID = -620167798;
+    private static final long serialVersionUID = 766640475;
 
     /**
      * The reference instance of <code>public.v_assistance</code>
@@ -107,6 +107,26 @@ public class VAssistance extends TableImpl<VAssistanceRecord> {
      * The column <code>public.v_assistance.porte</code>.
      */
     public final TableField<VAssistanceRecord, String> PORTE = createField("porte", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+
+    /**
+     * The column <code>public.v_assistance.is_ok</code>.
+     */
+    public final TableField<VAssistanceRecord, Boolean> IS_OK = createField("is_ok", org.jooq.impl.SQLDataType.BOOLEAN, this, "");
+
+    /**
+     * The column <code>public.v_assistance.new_create</code>.
+     */
+    public final TableField<VAssistanceRecord, Boolean> NEW_CREATE = createField("new_create", org.jooq.impl.SQLDataType.BOOLEAN, this, "");
+
+    /**
+     * The column <code>public.v_assistance.when_ok</code>.
+     */
+    public final TableField<VAssistanceRecord, LocalDateTime> WHEN_OK = createField("when_ok", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+
+    /**
+     * The column <code>public.v_assistance.direction</code>.
+     */
+    public final TableField<VAssistanceRecord, String> DIRECTION = createField("direction", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
      * Create a <code>public.v_assistance</code> table reference

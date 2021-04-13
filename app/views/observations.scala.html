@@ -42,7 +42,7 @@
 <tr>
 	<th style="color: #FF9800">@a.getObservations()</th>
 	<th>
-	@if(request.session.get("login").get() == a.getMaintenacier()){
+	@if(request.session.get("login").get() == a.getMaintenacier() && (!a.getIsClose() || !a.getIsOk())){
 	<a class="btn btn-danger btn-xs btn-rounded"
 	href="@controllers.routes.AssistanceCtrl.delObs(a.getId)"
 	role="button" data-rel="tooltip" title="Activé"

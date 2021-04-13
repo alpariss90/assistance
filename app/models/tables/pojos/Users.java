@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Users implements Serializable {
 
-    private static final long serialVersionUID = 2138757083;
+    private static final long serialVersionUID = 667509262;
 
     private String        login;
     private String        droit;
@@ -36,6 +36,7 @@ public class Users implements Serializable {
     private String        batiment;
     private String        niveau;
     private String        porte;
+    private String        direction;
 
     public Users() {}
 
@@ -51,6 +52,7 @@ public class Users implements Serializable {
         this.batiment = value.batiment;
         this.niveau = value.niveau;
         this.porte = value.porte;
+        this.direction = value.direction;
     }
 
     public Users(
@@ -64,7 +66,8 @@ public class Users implements Serializable {
         String        photo,
         String        batiment,
         String        niveau,
-        String        porte
+        String        porte,
+        String        direction
     ) {
         this.login = login;
         this.droit = droit;
@@ -77,6 +80,7 @@ public class Users implements Serializable {
         this.batiment = batiment;
         this.niveau = niveau;
         this.porte = porte;
+        this.direction = direction;
     }
 
     public String getLogin() {
@@ -167,6 +171,14 @@ public class Users implements Serializable {
         this.porte = porte;
     }
 
+    public String getDirection() {
+        return this.direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Users (");
@@ -182,6 +194,7 @@ public class Users implements Serializable {
         sb.append(", ").append(batiment);
         sb.append(", ").append(niveau);
         sb.append(", ").append(porte);
+        sb.append(", ").append(direction);
 
         sb.append(")");
         return sb.toString();

@@ -4,6 +4,7 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index(request:Request)
+GET     /index                           controllers.AssistanceCtrl.indexPlusMaj(request:Request)
 GET     /accueil                           controllers.HomeController.acceuil(profil: String, request:Request)
 GET     /test                           controllers.HomeController.test(request:Request)
 POST    /login                  	controllers.HomeController.authentification(request:Request)
@@ -43,6 +44,12 @@ GET     /assistance/enter                         controllers.AssistanceCtrl.ent
 GET     /assistance/observ                         controllers.AssistanceCtrl.observations(id: Long, request:Request)
 POST     /assistance/saveObs                         controllers.AssistanceCtrl.saveObs(request:Request)
 GET     /assistance/del                         controllers.AssistanceCtrl.delObs(id: Long, request:Request)
+GET     /assistance/ok                         controllers.AssistanceCtrl.okAgent(id: Long, request:Request)
+GET     /assistance/reouvrir                         controllers.AssistanceCtrl.reouvrir(id: Long, request:Request)
+GET     /assistance/mp3-file                         controllers.AssistanceCtrl.mpFileForm(request:Request)
+GET     /assistance/fsituation                         controllers.AssistanceCtrl.fsituation(request:Request)
+POST     /assistance/dsituation                         controllers.AssistanceCtrl.downloadSituation(request:Request)
+GET     /assistance/fiche                         controllers.AssistanceCtrl.downloadFiche(id: Long, request:Request)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

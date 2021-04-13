@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="assis" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2cef5f97-e79d-4717-8fc2-865f2d3c4a65">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="assistance"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="97"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="892"/>
+	<parameter name="id" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[select
+*
+from
+v_assistance
+where 
+id=  $P{id}]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+	</field>
+	<field name="motif" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="motif"/>
+	</field>
+	<field name="declarant" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="declarant"/>
+	</field>
+	<field name="observations" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="observations"/>
+	</field>
+	<field name="is_close" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="is_close"/>
+	</field>
+	<field name="maintenacier" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="maintenacier"/>
+	</field>
+	<field name="when_done" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="when_done"/>
+	</field>
+	<field name="when_close" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="when_close"/>
+	</field>
+	<field name="nom_prenom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_prenom"/>
+	</field>
+	<field name="batiment" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="batiment"/>
+	</field>
+	<field name="niveau" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="niveau"/>
+	</field>
+	<field name="porte" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="porte"/>
+	</field>
+	<field name="is_ok" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="is_ok"/>
+	</field>
+	<field name="new_create" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="new_create"/>
+	</field>
+	<field name="when_ok" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="when_ok"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="550" height="65" uuid="32d5a565-dca8-4a08-b19c-27e1ab7fb39c"/>
+				<imageExpression><![CDATA["/home/pc/JaspersoftWorkspace/MyReports/ins.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="550" height="21" uuid="d5137936-7aa7-442c-895b-ac6f5ae68b7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ASSISTANCES AUX AGENTS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="50" width="550" height="20" uuid="47ebf53b-2a87-4a0f-98ae-b6ffec4f02c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fiche technique "+$F{nom_prenom}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="180" height="40" uuid="581061c9-964e-4e49-9261-17048fcf9b56">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94ca56a8-6be6-449e-b24c-e155b2bb174b"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[motif]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="370" height="40" uuid="df5c0796-34b7-445b-9e08-a1804f33b2d0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94ca56a8-6be6-449e-b24c-e155b2bb174b"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observations]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="80" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="180" height="80" uuid="97229f08-8b8a-410a-ba89-6ed52613b871">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94ca56a8-6be6-449e-b24c-e155b2bb174b"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motif}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="160" height="40" uuid="c6825f7b-9535-4d2c-8149-c67fe7f9dc70"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Signature intervenant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="180" height="40" uuid="fce61a5e-f299-4473-8a0a-f6fbda8bb7a3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Signature agent]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="48" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -134,4 +134,11 @@ public class UsersDao extends DAOImpl<UsersRecord, models.tables.pojos.Users, St
     public List<models.tables.pojos.Users> fetchByPorte(String... values) {
         return fetch(Users.USERS.PORTE, values);
     }
+
+    /**
+     * Fetch records that have <code>direction IN (values)</code>
+     */
+    public List<models.tables.pojos.Users> fetchByDirection(String... values) {
+        return fetch(Users.USERS.DIRECTION, values);
+    }
 }

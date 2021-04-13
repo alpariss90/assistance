@@ -113,4 +113,25 @@ public class AssistanceDao extends DAOImpl<AssistanceRecord, models.tables.pojos
     public List<models.tables.pojos.Assistance> fetchByWhenClose(LocalDateTime... values) {
         return fetch(Assistance.ASSISTANCE.WHEN_CLOSE, values);
     }
+
+    /**
+     * Fetch records that have <code>is_ok IN (values)</code>
+     */
+    public List<models.tables.pojos.Assistance> fetchByIsOk(Boolean... values) {
+        return fetch(Assistance.ASSISTANCE.IS_OK, values);
+    }
+
+    /**
+     * Fetch records that have <code>when_ok IN (values)</code>
+     */
+    public List<models.tables.pojos.Assistance> fetchByWhenOk(LocalDateTime... values) {
+        return fetch(Assistance.ASSISTANCE.WHEN_OK, values);
+    }
+
+    /**
+     * Fetch records that have <code>new_create IN (values)</code>
+     */
+    public List<models.tables.pojos.Assistance> fetchByNewCreate(Boolean... values) {
+        return fetch(Assistance.ASSISTANCE.NEW_CREATE, values);
+    }
 }

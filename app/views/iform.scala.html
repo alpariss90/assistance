@@ -71,6 +71,26 @@
 </div>
 
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+<label for="direction">Direction</label>
+
+<select  name="dir" class="form-control" required="required" >
+	<option value="">Selectionnez votre direction</option>
+	<option @if(null != u.getDirection && u.getDirection.equals("DG")){selected="selected"} value="DG">DIRECTION GENERALE</option>
+	<option  @if(null != u.getDirection && u.getDirection.equals("DRH")){selected="selected"} value="DRH">DIRECTION DES RESSOURCES HUMAINES</option>
+	<option  @if(null != u.getDirection && u.getDirection.equals("DRFM")){selected="selected"} value="DRFM">DIRECTION DES RESSOURCES MATERIELS ET FINANCIERES</option>
+	<option  @if(null != u.getDirection && u.getDirection.equals("DER")){selected="selected"} value="DER">DIRECTION DES ENQUETES ET RECENSEMENTS</option>
+	<option  @if(null != u.getDirection && u.getDirection.equals("DSEDS")){selected="selected"} value="DSEDS">DIRECTION DES STATISTIQUES ET DES ETUDES DEMOGRAPHIQUES ET SOCIALES</option>
+	<option  @if(null != u.getDirection && u.getDirection.equals("DCMIS")){selected="selected"} value="DCMIS">DIRECTION DE LA COORDINATIONS ET DU MANAGEMENT DE L'INFORMATION STATISTIQUE</option>
+	<option  @if(null != u.getDirection && u.getDirection.equals("DCNCE")){selected="selected"} value="DCNCE">DIRECTION DE LA COMPTABILITE NATIONALE DE LA CONJONCTURE ET DES ETUDES ECONOMIQUES</option>
+	<option  @if(null != u.getDirection && u.getDirection.equals("ENSTAT")){selected="selected"} value="ENSTAT">ECOLE NATIONALE DE LA STATISTIQUE</option>	
+	<option  @if(null != u.getDirection && u.getDirection.equals("ISS")){selected="selected"} value="ISS">INSPECTION DES SERVICES STATISTIQUES</option>									
+</select>
+
+</div>
+
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
 <label for="Batiment">Batiment</label>
 
 <select  name="bat" class="form-control" required="required" >

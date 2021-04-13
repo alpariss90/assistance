@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Assistance implements Serializable {
 
-    private static final long serialVersionUID = 1512372132;
+    private static final long serialVersionUID = 1326362226;
 
     private Long          id;
     private String        motif;
@@ -33,6 +33,9 @@ public class Assistance implements Serializable {
     private String        maintenacier;
     private LocalDateTime whenDone;
     private LocalDateTime whenClose;
+    private Boolean       isOk;
+    private LocalDateTime whenOk;
+    private Boolean       newCreate;
 
     public Assistance() {}
 
@@ -45,6 +48,9 @@ public class Assistance implements Serializable {
         this.maintenacier = value.maintenacier;
         this.whenDone = value.whenDone;
         this.whenClose = value.whenClose;
+        this.isOk = value.isOk;
+        this.whenOk = value.whenOk;
+        this.newCreate = value.newCreate;
     }
 
     public Assistance(
@@ -55,7 +61,10 @@ public class Assistance implements Serializable {
         Boolean       isClose,
         String        maintenacier,
         LocalDateTime whenDone,
-        LocalDateTime whenClose
+        LocalDateTime whenClose,
+        Boolean       isOk,
+        LocalDateTime whenOk,
+        Boolean       newCreate
     ) {
         this.id = id;
         this.motif = motif;
@@ -65,6 +74,9 @@ public class Assistance implements Serializable {
         this.maintenacier = maintenacier;
         this.whenDone = whenDone;
         this.whenClose = whenClose;
+        this.isOk = isOk;
+        this.whenOk = whenOk;
+        this.newCreate = newCreate;
     }
 
     public Long getId() {
@@ -131,6 +143,30 @@ public class Assistance implements Serializable {
         this.whenClose = whenClose;
     }
 
+    public Boolean getIsOk() {
+        return this.isOk;
+    }
+
+    public void setIsOk(Boolean isOk) {
+        this.isOk = isOk;
+    }
+
+    public LocalDateTime getWhenOk() {
+        return this.whenOk;
+    }
+
+    public void setWhenOk(LocalDateTime whenOk) {
+        this.whenOk = whenOk;
+    }
+
+    public Boolean getNewCreate() {
+        return this.newCreate;
+    }
+
+    public void setNewCreate(Boolean newCreate) {
+        this.newCreate = newCreate;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Assistance (");
@@ -143,6 +179,9 @@ public class Assistance implements Serializable {
         sb.append(", ").append(maintenacier);
         sb.append(", ").append(whenDone);
         sb.append(", ").append(whenClose);
+        sb.append(", ").append(isOk);
+        sb.append(", ").append(whenOk);
+        sb.append(", ").append(newCreate);
 
         sb.append(")");
         return sb.toString();

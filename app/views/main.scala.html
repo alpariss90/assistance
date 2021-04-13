@@ -56,8 +56,10 @@
 }
     </style>
     </head>
-    <body style="background-color: white; padding-top: 100px">
+    <body style="background-color: white; padding-top: 100px" id="bb">
     @header(request)
+    
+    <input type="hidden" id="profill" value="@request.session.get("droit").get()">
     
      <div style="padding-top: 20px" class="container">
 	                        @if(request.flash.get("error").isPresent()) {
@@ -130,7 +132,7 @@
         
       </div>
       <div class="modal-footer">
-        <a href="@routes.AssistanceCtrl.index()" class="btn btn-danger" >FERMER</a>
+        <a href="@routes.AssistanceCtrl.indexPlusMaj()" class="btn btn-danger" >FERMER</a>
         
       </div>
     </div>
@@ -138,7 +140,43 @@
 </div>
 
 
+<!--  
 
+
+<audio id="multiaudio1" src="http://192.168.137.153/alarme.mp3" preload="auto"></audio>
+
+
+
+<audio id="multiaudio1" src="http://192.168.137.153/alarme.mp3" autoplay muted>
+
+
+
+<p id="demo"></p>
+<audio id="myAudio" controls autoplay>
+  <source src='@routes.Assets.versioned("alarme.ogg")' type="audio/ogg">
+  <source src='@routes.Assets.versioned("alarme.ogg")' type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<audio id="myAudio" controls autoplay>
+  <source src='@routes.Assets.versioned("alarme.ogg")' type="audio/ogg">
+  <source src='@routes.Assets.versioned("alarme.ogg")' type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<button onclick="myFunction()">Try it</button>
+
+ <source src="http://172.16.11.4/alarme.mp3" type="audio/mp3">
+ 
+ 
+ src='@routes.Assets.versioned("alarme.mp")'
+-->
+
+
+
+<audio id="aud" style="display:none" src="" @if(request.session.get("droit").get()=="Admin") {controls autoplay}  >
+ 
+Your browser does not support the audio element.
+</audio>
 
 
         <script src="@routes.Assets.versioned("js/jquery-3.2.1.js")" ></script>
@@ -169,8 +207,44 @@
 		
 
 <script>
+		
+		
+		
 $(document).ready(function(){
 	
+	
+	var url;
+
+    if ( localStorage.getItem('mpFile')) {
+      url = localStorage.getItem('mpFile');
+      $('#aud').attr('src', url);
+      console.log(document.getElementById('aud'));
+    }
+    
+	
+	//var elem = document.getElementById('bb');
+
+	// Simulate clicking on the specified element.
+	//triggerEvent( elem, 'click' );
+
+	/*function triggerEvent( elem, event ) {
+	  var clickEvent = new Event( event ); // Create the event.
+	  elem.dispatchEvent( clickEvent );    // Dispatch the event.
+	}*/
+	
+	
+	/*$('#bt').on('click', function(e){
+	    alert("ok");
+	}*/
+
+	//alert();
+	
+	var p=$('#profill').val();
+
+		
+	    //console.log(document.getElementById('aud'));
+		document.getElementById('aud').pause();
+		document.getElementById('aud').currentTime = 0;
 	
 	
 	
@@ -186,15 +260,15 @@ $(document).ready(function(){
 	
 	$('.montant').number(true, 0, ',', ' ');
 	
-	$('#datatabl').DataTable();
+	$('.datatabl').DataTable();
 	
-	$('.datepicker').datepicker();
+	$('#datepicker').datepicker();
 
 
 	
-	    var audioElement = document.createElement('audio');
+	   // var audioElement = document.createElement('audio');
 	   // audioElement.setAttribute('src', 'http://www.soundjay.com/misc/sounds/bell-ringing-01.mp3');
-	   audioElement.setAttribute('src', 'http://172.16.11.4//alarme.mp3');
+	  // audioElement.setAttribute('src', 'http://172.16.11.4//alarme.mp3');
 	   //audioElement.setAttribute('autoplay', 'true');
 	   //audioElement.setAttribute('muted', '');
 	    
@@ -214,14 +288,20 @@ $(document).ready(function(){
 	        	$.ajax({type:"GET", url:"/assistance/count",
 	    			error : function(err){  console.log(err) },
 	    			success : function(dataFromServer) {
+	    				//console.log("ok");
 	    				if(dataFromServer.options=="1"){
-	    					$('#myModall').modal('show');
+	    					
+	    					if(p=="Admin"){
+	    						$('#myModall').modal('show');
+	    						document.getElementById('aud').play();
+	    					}
+	    					
 	    				}
 	    			}
 
 	    			});
 	        	
-	        	 }, 3000);
+	        	 }, 7000);
 	
 	    
 	    

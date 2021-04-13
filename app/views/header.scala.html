@@ -15,7 +15,9 @@
 							<img src="@routes.Assets.versioned("images/face5.jpg")" class="img-circle" alt="profile" style="width: 40px; " />
 							<b class="caret"></b>
 							<span class="nav-profile-name"></span>
+							<span style="color: white">@request.session.get("login").get()</span>
 						</a>
+						
 						<ul class="dropdown-menu pull-right">
 <!-- 							<li><a href="#">Compte</a></li> -->
 							<li><a href="@controllers.routes.UserCtrl.fchangepass(request.session.get("login").get())" class="li-moda">Changer mot de passe</a></li>
@@ -37,11 +39,14 @@
 				
 				@if(request.session.get("droit").get() == "Admin") {
 					<li><a href="@routes.UserCtrl.index()" style="color: black;">Utilisateurs</a></li>
+					<li><a href="@routes.AssistanceCtrl.mpFileForm()" style="color: black;">Mp4 file</a></li>
+					<li><a href="@routes.AssistanceCtrl.fsituation()" style="color: black;">Situation</a></li>
 					  }
-					  
 					  @if(request.session.get("droit").get() == "Agent") {
 					  <li><a href="@controllers.routes.AssistanceCtrl.alert(request.session.get("login").get())" style="color: black;"  class="li-modalert">Alert</a></li>
 					  }
+					  
+					  
 					  
 					  <li><a href="@routes.AssistanceCtrl.index()" style="color: black;" id="play">Assistances</a></li>
 					  

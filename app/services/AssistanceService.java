@@ -3,6 +3,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jooq.False;
+
 import models.Tables;
 import models.tables.daos.AssistanceDao;
 import models.tables.pojos.Assistance;
@@ -63,6 +65,14 @@ public class AssistanceService extends AssistanceDao {
 		return lb;
 	}
 	
+	public void setOkOnNewAlert(){
+		con.connection().update(Tables.ASSISTANCE)
+		.set(Tables.ASSISTANCE.NEW_CREATE, false)
+		.where(Tables.ASSISTANCE.NEW_CREATE.isTrue())
+		.execute();
+		con.connection().close();
+	}
+	
 	
 	/**
 	 * Cette methode permet de recuperer la liste de tout les objets direction qui ne sont pas supprimer
@@ -70,9 +80,21 @@ public class AssistanceService extends AssistanceDao {
 	public List<VAssistance> getByDeclarant(String login){
 		List<VAssistance> lb= con.connection().selectFrom(Tables.V_ASSISTANCE)
 				.where(Tables.V_ASSISTANCE.DECLARANT.equal(login))
+				.orderBy(Tables.V_ASSISTANCE.ID.desc())
 				.fetchInto(VAssistance.class);
 		con.connection().close();
 		return lb;
+	}
+	
+	public boolean isDeclarantAllOk(String login){
+		List<VAssistance> vs=getByDeclarant(login);
+		boolean b=true;
+		for (VAssistance vAssistance : vs) {
+			if(vAssistance.getIsClose() && !vAssistance.getIsOk()){
+				b=false;
+			}
+		}
+		return b;
 	}
 	
 	
@@ -117,6 +139,17 @@ public class AssistanceService extends AssistanceDao {
 		 Long total = con.connection().selectCount()
 	                .from(Tables.ASSISTANCE)
 	                //.where(Tables.ASSISTANCE.DELETED.isFalse()
+	                      //  .and(Tables.ASSISTANCE.NOM_PRENOM_ASSISTANCE.lower().like('%' + filter.toLowerCase() + '%')
+	                        		 //.or(Tables.ASSISTANCE.TELEPHONE_ASSISTANCE.like('%' + filter + '%')))
+	                        		 //  .or(Tables.ASSISTANCE.ID_ASSISTANCE.lower().like('%' + filter.toLowerCase() + '%')))
+	                .fetchAny(0, Long.class);
+		 return total;
+	 }
+	 
+	 public Long getCountNew(){
+		 Long total = con.connection().selectCount()
+	                .from(Tables.ASSISTANCE)
+	                .where(Tables.ASSISTANCE.NEW_CREATE.isTrue())
 	                      //  .and(Tables.ASSISTANCE.NOM_PRENOM_ASSISTANCE.lower().like('%' + filter.toLowerCase() + '%')
 	                        		 //.or(Tables.ASSISTANCE.TELEPHONE_ASSISTANCE.like('%' + filter + '%')))
 	                        		 //  .or(Tables.ASSISTANCE.ID_ASSISTANCE.lower().like('%' + filter.toLowerCase() + '%')))

@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Assistance extends TableImpl<AssistanceRecord> {
 
-    private static final long serialVersionUID = -930363853;
+    private static final long serialVersionUID = -941832225;
 
     /**
      * The reference instance of <code>public.assistance</code>
@@ -95,6 +95,21 @@ public class Assistance extends TableImpl<AssistanceRecord> {
      * The column <code>public.assistance.when_close</code>.
      */
     public final TableField<AssistanceRecord, LocalDateTime> WHEN_CLOSE = createField("when_close", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+
+    /**
+     * The column <code>public.assistance.is_ok</code>.
+     */
+    public final TableField<AssistanceRecord, Boolean> IS_OK = createField("is_ok", org.jooq.impl.SQLDataType.BOOLEAN, this, "");
+
+    /**
+     * The column <code>public.assistance.when_ok</code>.
+     */
+    public final TableField<AssistanceRecord, LocalDateTime> WHEN_OK = createField("when_ok", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+
+    /**
+     * The column <code>public.assistance.new_create</code>.
+     */
+    public final TableField<AssistanceRecord, Boolean> NEW_CREATE = createField("new_create", org.jooq.impl.SQLDataType.BOOLEAN, this, "");
 
     /**
      * Create a <code>public.assistance</code> table reference

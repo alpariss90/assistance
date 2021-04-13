@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class VAssistance implements Serializable {
 
-    private static final long serialVersionUID = 779672453;
+    private static final long serialVersionUID = -171327790;
 
     private Long          id;
     private String        motif;
@@ -37,6 +37,10 @@ public class VAssistance implements Serializable {
     private String        batiment;
     private String        niveau;
     private String        porte;
+    private Boolean       isOk;
+    private Boolean       newCreate;
+    private LocalDateTime whenOk;
+    private String        direction;
 
     public VAssistance() {}
 
@@ -53,6 +57,10 @@ public class VAssistance implements Serializable {
         this.batiment = value.batiment;
         this.niveau = value.niveau;
         this.porte = value.porte;
+        this.isOk = value.isOk;
+        this.newCreate = value.newCreate;
+        this.whenOk = value.whenOk;
+        this.direction = value.direction;
     }
 
     public VAssistance(
@@ -67,7 +75,11 @@ public class VAssistance implements Serializable {
         String        nomPrenom,
         String        batiment,
         String        niveau,
-        String        porte
+        String        porte,
+        Boolean       isOk,
+        Boolean       newCreate,
+        LocalDateTime whenOk,
+        String        direction
     ) {
         this.id = id;
         this.motif = motif;
@@ -81,6 +93,10 @@ public class VAssistance implements Serializable {
         this.batiment = batiment;
         this.niveau = niveau;
         this.porte = porte;
+        this.isOk = isOk;
+        this.newCreate = newCreate;
+        this.whenOk = whenOk;
+        this.direction = direction;
     }
 
     public Long getId() {
@@ -179,6 +195,38 @@ public class VAssistance implements Serializable {
         this.porte = porte;
     }
 
+    public Boolean getIsOk() {
+        return this.isOk;
+    }
+
+    public void setIsOk(Boolean isOk) {
+        this.isOk = isOk;
+    }
+
+    public Boolean getNewCreate() {
+        return this.newCreate;
+    }
+
+    public void setNewCreate(Boolean newCreate) {
+        this.newCreate = newCreate;
+    }
+
+    public LocalDateTime getWhenOk() {
+        return this.whenOk;
+    }
+
+    public void setWhenOk(LocalDateTime whenOk) {
+        this.whenOk = whenOk;
+    }
+
+    public String getDirection() {
+        return this.direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("VAssistance (");
@@ -195,6 +243,10 @@ public class VAssistance implements Serializable {
         sb.append(", ").append(batiment);
         sb.append(", ").append(niveau);
         sb.append(", ").append(porte);
+        sb.append(", ").append(isOk);
+        sb.append(", ").append(newCreate);
+        sb.append(", ").append(whenOk);
+        sb.append(", ").append(direction);
 
         sb.append(")");
         return sb.toString();

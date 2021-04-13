@@ -40,7 +40,7 @@
 										<option value="">Selectionner un role</option>
 										<option value="Admin" @if( user.getDroit() !=null
 											&& user.getDroit().equals("Admin")){ selected="selected"}>Admin</option>
-										<option value="Caissier" @if(user.getDroit() !=null
+										<option value="Agent" @if(user.getDroit() !=null
 											&& user.getDroit().equals("Agent)")){ selected="selected"}>Agent</option>
 										
 									</select>
