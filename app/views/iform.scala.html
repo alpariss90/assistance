@@ -50,6 +50,12 @@
 
 
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+<label for="numporte">Nom & prénom</label>
+<input type="text" name="nmPr" class="form-control" placeholder="Saisissez votre nom et prenom" required="required" value="@u.getNomPrenom()">
+</div>
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
 <label for="password">Nouveau password</label>
 <input type="password" name="npasse" required="required"
 										
@@ -74,7 +80,7 @@
 <label for="direction">Direction</label>
 
 <select  name="dir" class="form-control" required="required" >
-	<option value="">Selectionnez votre direction</option>
+	<!-- 
 	<option @if(null != u.getDirection && u.getDirection.equals("DG")){selected="selected"} value="DG">DIRECTION GENERALE</option>
 	<option  @if(null != u.getDirection && u.getDirection.equals("DRH")){selected="selected"} value="DRH">DIRECTION DES RESSOURCES HUMAINES</option>
 	<option  @if(null != u.getDirection && u.getDirection.equals("DRFM")){selected="selected"} value="DRFM">DIRECTION DES RESSOURCES MATERIELS ET FINANCIERES</option>
@@ -84,6 +90,30 @@
 	<option  @if(null != u.getDirection && u.getDirection.equals("DCNCE")){selected="selected"} value="DCNCE">DIRECTION DE LA COMPTABILITE NATIONALE DE LA CONJONCTURE ET DES ETUDES ECONOMIQUES</option>
 	<option  @if(null != u.getDirection && u.getDirection.equals("ENSTAT")){selected="selected"} value="ENSTAT">ECOLE NATIONALE DE LA STATISTIQUE</option>	
 	<option  @if(null != u.getDirection && u.getDirection.equals("ISS")){selected="selected"} value="ISS">INSPECTION DES SERVICES STATISTIQUES</option>									
+ -->
+<option value="">Selectionnez votre direction</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DG")){selected="selected"} value="DG">	Direction Générale	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("SG")){selected="selected"} value="SG">	Secrètariat Gènèral	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DRH")){selected="selected"} value="DRH">	Direction des Ressources Humaines	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DRFM")){selected="selected"} value="DRFM">	Direction des Ressources Financières et du Matériel	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DCMIS")){selected="selected"} value="DCMIS">	Direction de la Coordination et du Management de l'Information Statistique	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DCNCEE")){selected="selected"} value="DCNCEE">	Direction de la Comptabilité Nationale, de la Conjoncture et des Etudes Economiques	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DSEDS")){selected="selected"} value="DSEDS">	Direction des Statistiques et des Etudes Démographiques et Sociales	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DER")){selected="selected"} value="DER">	Direction des Enquêtes et des Recensements	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("ENSTAT")){selected="selected"} value="ENSTAT">	Ecole Nationale de la Statistique	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("STP/CNS")){selected="selected"} value="STP/CNS">	Secrètariat Technique Permanent du Conseil National de la Statistique	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("ISS")){selected="selected"} value="ISS">	Inspection des Services Statistiques	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DR/INS/AZ")){selected="selected"} value="DR/INS/AZ">	Direction Régionale/INS Agadez	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DR/INS/DA")){selected="selected"} value="DR/INS/DA">	Direction Régionale/INS Diffa	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DR/INS/DO")){selected="selected"} value="DR/INS/DO">	Direction Régionale/INS Dosso	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DR/INS/MI")){selected="selected"} value="DR/INS/MI">	Direction Régionale/INS Maradi	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DR/INS/TA")){selected="selected"} value="DR/INS/TA">	Direction Régionale/INS Tahoua	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DR/INS/TI")){selected="selected"} value="DR/INS/TI">	Direction Règionale/INS Tillabèri	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DR/INS/ZR")){selected="selected"} value="DR/INS/ZR">	Direction Règionale/INS Zinder	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DR/INS/NY")){selected="selected"} value="DR/INS/NY">	Direction Régionale/INS Niamey	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("DI")){selected="selected"} value="DI">	Division Informatique	</option>
+<option @if(null != u.getDirection && u.getDirection.equals("BCR")){selected="selected"} value="BCR">	Bureau Central du Recensement	</option>
+
 </select>
 
 </div>
@@ -119,6 +149,8 @@
 <label for="numporte">Numéro porte</label>
 <input type="text" name="por" class="form-control" placeholder="Saisissez votre N° porte" required="required" value="@u.getPorte()">
 </div>
+
+
 
 
 

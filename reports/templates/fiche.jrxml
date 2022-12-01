@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="assis" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2cef5f97-e79d-4717-8fc2-865f2d3c4a65">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="assistance"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="assistance.xml"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="97"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="892"/>
@@ -14,51 +14,22 @@ v_assistance
 where 
 id=  $P{id}]]>
 	</queryString>
-	<field name="id" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="id"/>
-	</field>
-	<field name="motif" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="motif"/>
-	</field>
-	<field name="declarant" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="declarant"/>
-	</field>
-	<field name="observations" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="observations"/>
-	</field>
-	<field name="is_close" class="java.lang.Boolean">
-		<property name="com.jaspersoft.studio.field.label" value="is_close"/>
-	</field>
-	<field name="maintenacier" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="maintenacier"/>
-	</field>
-	<field name="when_done" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="when_done"/>
-	</field>
-	<field name="when_close" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="when_close"/>
-	</field>
-	<field name="nom_prenom" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nom_prenom"/>
-	</field>
-	<field name="batiment" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="batiment"/>
-	</field>
-	<field name="niveau" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="niveau"/>
-	</field>
-	<field name="porte" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="porte"/>
-	</field>
-	<field name="is_ok" class="java.lang.Boolean">
-		<property name="com.jaspersoft.studio.field.label" value="is_ok"/>
-	</field>
-	<field name="new_create" class="java.lang.Boolean">
-		<property name="com.jaspersoft.studio.field.label" value="new_create"/>
-	</field>
-	<field name="when_ok" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="when_ok"/>
-	</field>
+	<field name="id" class="java.lang.Long"/>
+	<field name="motif" class="java.lang.String"/>
+	<field name="declarant" class="java.lang.String"/>
+	<field name="observations" class="java.lang.String"/>
+	<field name="is_close" class="java.lang.Boolean"/>
+	<field name="maintenacier" class="java.lang.String"/>
+	<field name="when_done" class="java.sql.Timestamp"/>
+	<field name="when_close" class="java.sql.Timestamp"/>
+	<field name="nom_prenom" class="java.lang.String"/>
+	<field name="batiment" class="java.lang.String"/>
+	<field name="niveau" class="java.lang.String"/>
+	<field name="porte" class="java.lang.String"/>
+	<field name="is_ok" class="java.lang.Boolean"/>
+	<field name="new_create" class="java.lang.Boolean"/>
+	<field name="when_ok" class="java.sql.Timestamp"/>
+	<field name="direction" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -66,12 +37,12 @@ id=  $P{id}]]>
 		<band height="65" splitType="Stretch">
 			<image scaleImage="FillFrame">
 				<reportElement x="0" y="0" width="550" height="65" uuid="32d5a565-dca8-4a08-b19c-27e1ab7fb39c"/>
-				<imageExpression><![CDATA["/home/pc/JaspersoftWorkspace/MyReports/ins.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["ins.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="97" splitType="Stretch">
+		<band height="108" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="10" width="550" height="21" uuid="d5137936-7aa7-442c-895b-ac6f5ae68b7d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -85,6 +56,13 @@ id=  $P{id}]]>
 					<font size="13" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Fiche technique "+$F{nom_prenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="32" width="190" height="10" uuid="272f865e-9378-41a0-841a-613a095e2f31"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Le "+new SimpleDateFormat("dd/M/yyyy").format( $F{when_done})]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

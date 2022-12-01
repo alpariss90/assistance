@@ -68,6 +68,7 @@ public class AuthenticationCtrl extends Controller {
 		final String dir = formFactory.form().bindFromRequest(request).get("dir");
 		final String niv = formFactory.form().bindFromRequest(request).get("niv");
 		final String login = formFactory.form().bindFromRequest(request).get("log");
+		final String nmPrenom = formFactory.form().bindFromRequest(request).get("nmPr");
 		
 		Users u=userService.getUserByLogin(login);
 		//u.setLocalisation("Batiment "+bat+", niveua "+niv+", porte "+porte);
@@ -75,6 +76,7 @@ public class AuthenticationCtrl extends Controller {
 		u.setNiveau(niv);
 		u.setPorte(porte);
 		u.setDirection(dir);
+		u.setNomPrenom(nmPrenom);
 		
 		if (BCryptHash.checkPassword("1234", userService.getUserByLogin(login).getPasse())) {
 			if(npass.equals(rnpass)){

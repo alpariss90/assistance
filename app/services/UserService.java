@@ -50,6 +50,7 @@ public class UserService extends UsersDao {
 		user.setNiveau(u.getNiveau());
 		user.setPorte(u.getPorte());
 		user.setDirection(u.getDirection());
+		user.setNomPrenom(u.getNomPrenom());
 		
 		try {
 			if (b){

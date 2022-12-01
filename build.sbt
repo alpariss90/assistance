@@ -6,7 +6,6 @@ version := "1.0-SNAPSHOT"
 lazy val root = (project in file(".")).enablePlugins(PlayJava, LauncherJarPlugin)
 
 scalaVersion := "2.13.3"
-
 libraryDependencies += guice
 
 libraryDependencies ++= Seq(
@@ -42,4 +41,4 @@ libraryDependencies += "com.itextpdf.tool" % "xmlworker" % "5.4.1"
 libraryDependencies += "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1"
 //resolvers += "Jasper3rd" at "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/"
 
-resolvers += ("Jasper3rd" at "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/").withAllowInsecureProtocol(true)
+resolvers += ("Jasper3rd" at "https://jaspersoft.jfrog.io/artifactory/third-party-ce-artifacts").withAllowInsecureProtocol(true)
